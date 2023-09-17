@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: djtodo-cicd-deployment
+  namespace: cicd
+  labels:
+    app: djtodo-cicd
+spec:
+  replicas: 
+  selector:
+    matchLabels:
+      app: djtodo-cicd
+  template:
+    metadata:
+      labels:
+        app: djtodo-cicd
+    spec:
+      containers:
+      - name: djtodo-cicd
+        image: abhishekbhagat/django-todo-cicd
+        ports:
+        - containerPort: 8000
